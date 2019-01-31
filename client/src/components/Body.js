@@ -40,16 +40,12 @@ class Body extends Component
             error:false
             }
     }
-    else if(typeof(nextProps.restaurant.error)==='string')
+    if(typeof(nextProps.restaurant.error)==='string')
     {
       return{
         loading:false,
         error:true
       }
-    }
-    else
-    {
-      return null
     }
   }
  onSubmit(values)
