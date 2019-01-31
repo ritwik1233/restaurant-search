@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import  DisplayRestaurants from './DisplayRestaurants'
+import DisplayRestaurants from './DisplayRestaurants'
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {getrestaurants} from '../actions/index';
