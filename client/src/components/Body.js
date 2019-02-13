@@ -31,24 +31,29 @@ class Body extends Component
               </div>
             );
     }
- static getDerivedStateFromProps(nextProps, prevState)
+  componentDidUpdate(prevProps,state)
   {
-    if(nextProps.restaurant[0]!==undefined&&typeof(nextProps.restaurant.error)==='undefined')
-    {
-      return{
-            loading:false,
-            error:false
-            }
-    }
-    if(typeof(nextProps.restaurant.error)==='string')
-    {
-      return{
-        loading:false,
-        error:true
-      }
-    }
+  if(prevProps.error!==this.props.error&&this.props.error.error!==undefined)
+  {
+      this.setState({
+            error:true,
+            loading:false
+      })
   }
- onSubmit(values)
+  if(prevProps.restaurant!==this.props.restaurant&&this.props.error.error===undefined)
+  {
+   
+      this.setState({
+          loading:false,
+          error:false
+      })
+  }
+  
+ 
+}
+
+
+onSubmit(values)
   {
     this.setState({
               loading:true,
@@ -116,8 +121,8 @@ class Body extends Component
                       </form>
                       <br/>
                       <br/>
-                      {error}
                       {loading}
+                      {error}
                       {resultArray}                      
                     </div>
                   </div>
@@ -143,7 +148,8 @@ function validate(values)
 function mapStateToProps(state)
 {
  return{
-  restaurant:state.restaurant
+  restaurant:state.restaurant.restaurantData,
+  error:state.restaurant.error
  }
 }
 function mapDispatchToProps(dispatch){
