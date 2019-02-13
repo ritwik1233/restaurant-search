@@ -15,7 +15,7 @@ export const getrestaurants = (data) => {
         }
         else
         {
-            dispatch({type:"GET_RESTAURANT_DATA",payload:restaurant.data.restaurants});
+            dispatch({type:"GET_RESTAURANT_DATA",payload:restaurant.data});
         }
     }).catch(err=>{
         const error={

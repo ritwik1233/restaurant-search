@@ -22,7 +22,10 @@ app.post('/api/getRestaurantData',(req,res)=>{
                                 axios.get('https://developers.zomato.com/api/v2.1/search?entity_id='+city.data.location_suggestions[0].id.toString()+'&entity_type=city&cuisines='+cuisines.data.cuisines[findIndex].cuisine.cuisine_id.toString(),{
                                         headers: {'user-key' : keys.ZomatoAPIKey}
                                     }).then(result=>{
-                                        res.send(result.data)
+                                        const data=result.data.restaurants.map(eachData=>{
+                                            return {...eachData,apikey:0,restaurant:{...eachData.restaurant,apikey:0}}
+                                        })
+                                        res.send(data)
                                     }).catch(err=>{
                                         const error=
                                         {
