@@ -60,8 +60,8 @@ onSubmit(values)
               error:false
     })
     const data={
-        city:values.city,
-        cuisine:values.cuisine
+        city:values.city.trim(),
+        cuisine:values.cuisine.trim()
       }
     this.props.getrestaurants(data);
   }
