@@ -1,13 +1,9 @@
-
-var keys={}
-if(process.env.NODE_ENV==='production')
-{
-    var prod=require('./prod');    
-    keys=prod
+const keys = {}
+if(process.env.NODE_ENV==='production') {
+    const prod = require('./prod');    
+    keys = prod;
+} else {
+    const dev = require('./dev');
+    keys = dev;
 }
-else
-{
-    var dev=require('./dev');
-    keys=dev
-}
-module.exports=keys
+module.exports = keys;

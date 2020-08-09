@@ -1,4 +1,4 @@
-var prod={
-    ZomatoAPIKey:process.env.ZomatoAPIKey
+const prod = {
+    ZomatoAPIKey: process.env.ZomatoAPIKey
 }
-module.exports=prod
+module.exports = prod;
